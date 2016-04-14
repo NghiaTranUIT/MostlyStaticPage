@@ -72,4 +72,17 @@ class UserTest < ActiveSupport::TestCase
     @user.password = @user.password_confirmation = "a" * 5
     assert_not @user.valid?
   end
+  
+  test "Check before_save works -> email should downcase before saving" do
+    mix_email = "NghIaTRaN@gmail.com"
+    @user.email = mix_email
+    @user.save
+    
+    @user.reload
+    after_email = @user.email
+    
+    assert_equal mix_email.downcase, after_email
+    
+  end
+  
 end
