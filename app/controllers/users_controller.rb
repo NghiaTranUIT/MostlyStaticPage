@@ -11,7 +11,8 @@ class UsersController < ApplicationController
     @user = User.new(user_param)
     
     if @user.save
-      
+        # Handle Error here
+        
     else
       render 'new'
     end
