@@ -11,9 +11,10 @@ class UsersController < ApplicationController
     @user = User.new(user_param)
     
     if @user.save
-        # Handle Error here
-        
+        flash[:success] = "Welcome to the Sample App!"
+        redirect_to @user
     else
+      # Handle Error here
       render 'new'
     end
   end
